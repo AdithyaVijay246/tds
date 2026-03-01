@@ -1,0 +1,1 @@
+[![DevSync Automated Update](https://github.com/AdithyaVijay246/tds/actions/workflows/daily_update.yml/badge.svg?branch=main)](https://github.com/AdithyaVijay246/tds/actions/workflows/daily_update.yml)
