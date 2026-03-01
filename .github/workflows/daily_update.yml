@@ -1,0 +1,26 @@
+name: DevSync Automated Update
+
+on:
+  schedule:
+    # Runs at 10:15 AM UTC every day (No wildcards in hours/minutes)
+    - cron: '15 10 * * *'
+  workflow_dispatch: # This adds the "Run workflow" button for testing
+
+jobs:
+  devsync-task:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Update for 23f2000137@ds.study.iitm.ac.in
+        run: |
+          echo "Automated Sync: $(date)" >> sync_log.txt
+          git config --global user.name "DevSync Bot"
+          git config --global user.email "23f2000137@ds.study.iitm.ac.in"
+          git add sync_log.txt
+          git commit -m "Daily DevSync Update [skip ci]"
+          git push
